@@ -1,0 +1,22 @@
+@author     Dumitrescu Alexandra 333CA
+@since      March 2023
+@for        Operating Systems - Mini Libc
+
+______________________
+Implementation Details
+    |  String  ->  String operations do not use syscalls, therefore I just
+    |  used operations on pointers. (unless it's strdup)
+
+    | Memory -> I used lists for keeping track of the allocated heap memory
+    |           and used mmap syscalls to allocate memory for each call
+
+    | Stat -> For stat and fstat I initially used statx and wrapped kernel
+    |         struct statx into struct stat, keeping only the information
+    |         requiered. Then, after issues with checker, I used syscall.
+
+_________
+Credits
+    1. https://sciencesoftcode.files.wordpress.com/2018/12/the-linux-programming-interface-michael-kerrisk-1.pdf
+    2. https://elixir.bootlin.com/musl/latest/source
+    3. https://www.gnu.org/software/libc/manual/html_mono/libc.html
+    4. https://linux.die.net/man/
